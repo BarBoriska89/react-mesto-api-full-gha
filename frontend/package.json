@@ -1,5 +1,5 @@
 {
-  "name": "mesto-react",
+  "name": "frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,7 +20,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://barboriska89.github.io/react-mesto-auth/",
   "eslintConfig": {
     "extends": [
       "react-app",
