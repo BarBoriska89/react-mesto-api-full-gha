@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 
 const { errorsMV } = require('./middlewares/errors');
-const { requestLooger, errorLogger } = require('./middlewares/logger');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const {
   login, createUser,
 } = require('./controllers/users');
@@ -20,7 +20,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', { family: 4 });
 
 app.use(bodyParser.json());
 
-app.use(requestLooger); //логгер запросов
+app.use(requestLogger); //логгер запросов
 app.post('/signin', loginValidation, login);
 app.post('/signup', createUserValidation, createUser);
 app.use(auth);
