@@ -1,4 +1,4 @@
-const allowedCors = ['http://mesto-ray.students.nomoreparties.co', 'https://mesto-ray.students.nomoreparties.co', 'localhost:3000'];
+const allowedCors = ['http://mesto-ray.students.nomoreparties.co', 'https://mesto-ray.students.nomoreparties.co', 'http://localhost:3000'];
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
 const corsMW = (req, res, next) => {

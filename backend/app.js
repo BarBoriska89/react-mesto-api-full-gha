@@ -15,6 +15,7 @@ const {
   createUserValidation, loginValidation,
 } = require('./middlewares/validation');
 const { auth } = require('./middlewares/auth');
+
 const corsMW = require('./middlewares/cors');
 
 const app = express();

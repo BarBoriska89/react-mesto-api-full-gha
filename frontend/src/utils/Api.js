@@ -17,7 +17,7 @@ class Api {
 
     _getToken() {
         const jwt = localStorage.getItem('jwt');
-        console.log(`печать jwt из гетТокен${jwt}`);
+        console.log(`печать jwt из гетТокен${this.headers}`);
         return {
             authorization:  `Bearer ${jwt}`,
             ...this.headers,
