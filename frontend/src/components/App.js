@@ -44,28 +44,12 @@ function App() {
 
 
 
-
-  useEffect(() => {
-    const promises = [api.getUser(), api.getCards()];
-
-    const getInfo = Promise.all(promises);
-
-    getInfo
-      .then(([userData, cardList]) => {
-        setCurrentUser(userData);
-        console.log(userData);
-        setCards(cardList);
-      }
-      )
-      .catch((err) => console.log("Ошибка запроса данных о пользователе ", err));
-  }, [loggedIn]);
-
   const handleTokenCheck = () => {
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt');
       getContent(jwt).then((res) => {
-console.log(`результат ГктКонтент из хендел токен чек в апп${res.data}`);
-console.log(`результат ГктКонтент из хендел токен чек в апп${res.data.email}`);
+        console.log(`результат ГктКонтент из хендел токен чек в апп${res.data}`);
+        console.log(`результат ГктКонтент из хендел токен чек в апп${res.data.email}`);
         if (res) {
           handleLogin();
           console.log(loggedIn);
@@ -74,15 +58,34 @@ console.log(`результат ГктКонтент из хендел токе�
           navigate("/", { replace: true })
         }
       })
-      .then((res) => {
-        console.log(res);
-        console.log(loggedIn);
-      })
+        .then((res) => {
+          console.log(res);
+          console.log(loggedIn);
+        })
         .catch((err) => console.log(err));
     }
   }
 
   useEffect(() => {
+    console.log(`loggedIn=${loggedIn}`);
+    if (loggedIn) {
+      const promises = [api.getUser(), api.getCards()];
+
+      const getInfo = Promise.all(promises);
+
+      getInfo
+        .then(([userData, cardList]) => {
+          setCurrentUser(userData);
+          console.log(userData);
+          setCards(cardList);
+        }
+        )
+        .catch((err) => console.log("Ошибка запроса данных о пользователе ", err));
+    }
+  }, [loggedIn]);
+
+  useEffect(() => {
+    console.log('это юзЭффект с токенчек');
     handleTokenCheck();
   }, [])
 
@@ -289,7 +292,7 @@ console.log(`результат ГктКонтент из хендел токе�
           onClose={closeAllPopups}
           card={selectedCard}
         />
- 
+
         <InfoTooltip
           isOpen={isInfoTooltipPopupOpen}
           isSuccessfulRegistration={isSuccessfulRegistration}
