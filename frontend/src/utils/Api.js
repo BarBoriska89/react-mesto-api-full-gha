@@ -1,5 +1,5 @@
 const optionsApi = {
-    baseUrl: 'http://api.mesto-ray.students.nomoreparties.co',
+    baseUrl: 'https://api.mesto-ray.students.nomoreparties.co',
     headers: {
         'Content-Type': 'application/json'
     },
@@ -17,6 +17,7 @@ class Api {
 
     _getToken() {
         const jwt = localStorage.getItem('jwt');
+        console.log(jwt);
         return {
             Authorization: `Bearer ${jwt}`,
             ...this.headers,

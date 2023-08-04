@@ -40,7 +40,7 @@ function Register(props) {
                             name="password" id="password" minLength="2" maxLength="200" required onChange={handleChange} />
                         <span className="auth__error" id="user-password-error"></span>
                     </div>
-                    <button className="auth__button" type="submit" aria-label="Войти">Зарегистрироваться</button>
+                    <button className="auth__button" type="submit" aria-label="Войти">Зарегистрироваться!!!</button>
                 </form>
                 <div className="auth__signin">
                     <p className="auth__signin_title">Уже зарегистрированы?</p>
