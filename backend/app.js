@@ -24,7 +24,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', { family: 4 });
 
 app.use(bodyParser.json());
 
-app.use(requestLogger); //логгер запросов
+app.use(requestLogger); // логгер запросов
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // за 15 минут
@@ -41,9 +41,9 @@ app.post('/signup', createUserValidation, createUser);
 app.use(auth);
 app.use(router);
 
-app.use(errorLogger); //логгер ошибок
-app.use(errors());  //обработчик ошибок celebrate
-app.use(errorsMV);  //централизованный обработчик ошибок
+app.use(errorLogger); // логгер ошибок
+app.use(errors()); // обработчик ошибок celebrate
+app.use(errorsMV); // централизованный обработчик ошибок
 
 app.listen(3000, () => {
   console.log('Сервер запущен!');
