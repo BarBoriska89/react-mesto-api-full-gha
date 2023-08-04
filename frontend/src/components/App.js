@@ -53,6 +53,7 @@ function App() {
     getInfo
       .then(([userData, cardList]) => {
         setCurrentUser(userData);
+        console.log(userData);
         setCards(cardList);
       }
       )
@@ -67,9 +68,15 @@ console.log(`результат ГктКонтент из хендел токе�
 console.log(`результат ГктКонтент из хендел токен чек в апп${res.data.email}`);
         if (res) {
           handleLogin();
+          console.log(loggedIn);
+          console.log(`результат ГктКонтент из хендел токен чек в апп${res.data}`);
           setUserEmailOnHeader(res.data.email);
           navigate("/", { replace: true })
         }
+      })
+      .then((res) => {
+        console.log(res);
+        console.log(loggedIn);
       })
         .catch((err) => console.log(err));
     }
