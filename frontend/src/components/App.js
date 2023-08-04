@@ -63,7 +63,7 @@ function App() {
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt');
       getContent(jwt).then((res) => {
-
+console.log(`результат ГктКонтент из хендел токен чек в апп${res}`);
         if (res) {
           handleLogin();
           setUserEmailOnHeader(res.data.email);
