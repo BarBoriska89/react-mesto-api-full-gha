@@ -11,9 +11,10 @@ const corsMW = (req, res, next) => {
   console.log(requestHeaders);
 
   if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', origin);
   }
   if (method === 'OPTIONS') {
+    console.log('Я в предварительом запросе');
     res.header('Access-Control-Aow-Methods', DEFAULT_ALLOWED_METHODS);
     res.header('Access-Control-Allow-Headers', requestHeaders);
     res.end();
