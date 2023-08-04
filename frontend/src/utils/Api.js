@@ -19,7 +19,7 @@ class Api {
         const jwt = localStorage.getItem('jwt');
         console.log(`печать jwt из гетТокен${this.headers}`);
         return {
-            authorization:  `Bearer ${jwt}`,
+            authorization: `Bearer ${jwt}`,
             ...this.headers,
         }
     }
@@ -35,7 +35,7 @@ class Api {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this._getToken(),
-            body: JSON.stringify({ "name": name, "about":about }),
+            body: JSON.stringify({ name: name, about: about }),
         })
             .then((res) => this._checkResponse(res));
     }
