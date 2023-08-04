@@ -82,7 +82,7 @@ function App() {
         )
         .catch((err) => console.log("Ошибка запроса данных о пользователе ", err));
     }
-  }, [loggedIn]);
+  }, []);
 
   useEffect(() => {
     console.log('это юзЭффект с токенчек');
