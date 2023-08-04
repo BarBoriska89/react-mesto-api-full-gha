@@ -58,7 +58,7 @@ function App() {
       }
       )
       .catch((err) => console.log("Ошибка запроса данных о пользователе ", err));
-  }, []);
+  }, [loggedIn]);
 
   const handleTokenCheck = () => {
     if (localStorage.getItem('jwt')) {
