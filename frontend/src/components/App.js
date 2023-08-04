@@ -20,7 +20,7 @@ import InfoTooltip from './InfoTooltip ';
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState();
   const navigate = useNavigate();
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -51,7 +51,7 @@ function App() {
         console.log(`результат ГктКонтент из хендел токен чек в апп${res.data}`);
         console.log(`результат ГктКонтент из хендел токен чек в апп${res.data.email}`);
         if (res) {
-          handleLogin();
+          setLoggedIn(true);
           console.log(loggedIn);
           console.log(`результат ГктКонтент из хендел токен чек в апп${res.data}`);
           setUserEmailOnHeader(res.data.email);
@@ -82,7 +82,7 @@ function App() {
         )
         .catch((err) => console.log("Ошибка запроса данных о пользователе ", err));
     }
-  }, []);
+  }, [loggedIn]);
 
   useEffect(() => {
     console.log('это юзЭффект с токенчек');
