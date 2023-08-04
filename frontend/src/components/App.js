@@ -68,26 +68,25 @@ function App() {
 
   useEffect(() => {
     console.log(`loggedIn=${loggedIn}`);
-    if (loggedIn) {
-      const promises = [api.getUser(), api.getCards()];
+    const promises = [api.getUser(), api.getCards()];
 
-      const getInfo = Promise.all(promises);
+    const getInfo = Promise.all(promises);
 
-      getInfo
-        .then(([userData, cardList]) => {
-          setCurrentUser(userData);
-          console.log(userData);
-          setCards(cardList);
-        }
-        )
-        .catch((err) => console.log("Ошибка запроса данных о пользователе ", err));
-    }
-  }, [loggedIn]);
+    getInfo
+      .then(([userData, cardList]) => {
+        setCurrentUser(userData);
+        console.log(userData);
+        setCards(cardList);
+      }
+      )
+      .catch((err) => console.log("Ошибка запроса данных о пользователе ", err));
+  }
+    , []);
 
   useEffect(() => {
     console.log('это юзЭффект с токенчек');
     handleTokenCheck();
-  }, [])
+  }, []);
 
   function handleRegister(email, password) {
 
