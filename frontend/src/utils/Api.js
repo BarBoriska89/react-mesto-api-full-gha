@@ -37,7 +37,10 @@ class Api {
             headers: this._getToken(),
             body: JSON.stringify({ "name": name, "about": about }),
         })
-            .then((res) => this._checkResponse(res));
+            .then((res) => {
+                console.log(res);
+                this._checkResponse(res)
+            });
     }
 
     getCards() {
