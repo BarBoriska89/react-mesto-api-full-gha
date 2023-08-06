@@ -16,14 +16,14 @@ class Api {
         return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
     }
 
-  //  _getToken() {
+    //  _getToken() {
     //    const jwt = localStorage.getItem('jwt');
-      //  console.log(`печать jwt из гетТокен${this.headers}`);
-        //return {
+    //  console.log(`печать jwt из гетТокен${this.headers}`);
+    //return {
     //        authorization: `Bearer ${jwt}`,
-     //       ...this.headers,
-      //  }
-  //  }
+    //       ...this.headers,
+    //  }
+    //  }
 
     getUser() {
         return fetch(`${this._baseUrl}/users/me`, {
@@ -36,13 +36,12 @@ class Api {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
-            body: JSON.stringify({ name: name, about: about }),
+            body: JSON.stringify({ name, about }),
         })
             .then((res) => {
                 this._checkResponse(res);
                 console.log(res);
-            })
-            .then((resp) => console.log(resp));
+            });
     }
 
     getCards() {
