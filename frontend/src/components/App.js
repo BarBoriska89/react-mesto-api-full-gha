@@ -72,14 +72,14 @@ function App() {
       const jwt = localStorage.getItem('jwt');
       console.log(jwt);
       getContent(jwt).then((res) => {
-        console.log(`результат ГктКонтент из хендел токен чек в апп${res.data}`);
-        console.log(`результат ГктКонтент из хендел токен чек в апп${res.data.email}`);
+        console.log(`результат ГктКонтент из хендел токен чек в апп${res}`);
+        console.log(`результат ГктКонтент из хендел токен чек в апп${res.email}`);
         if (res) {
           console.log(`зашла в иф рес`);
           setLoggedIn(true);
           console.log(loggedIn);
           console.log(`результат ГктКонтент из хендел токен чек в апп${res.data}`);
-          setUserEmailOnHeader(res.data.email);
+          setUserEmailOnHeader(res.email);
           navigate("/", { replace: true })
         }
       })
