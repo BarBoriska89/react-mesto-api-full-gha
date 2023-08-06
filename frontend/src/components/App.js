@@ -20,7 +20,7 @@ import InfoTooltip from './InfoTooltip ';
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState();
+  const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -78,16 +78,14 @@ function App() {
           console.log(`зашла в иф рес`);
           setLoggedIn(true);
           console.log(loggedIn);
+          handleLogin();
+          console.log(loggedIn);
           console.log(`результат ГктКонтент из хендел токен чек в апп${res.data}`);
           setUserEmailOnHeader(res.email);
           navigate("/", { replace: true })
         }
       })
-        .then((res) => {
-          console.log(res);
-          console.log(loggedIn);
-        })
-        .catch((err) => console.log(err));
+              .catch((err) => console.log(err));
     }
   }, [loggedIn]);
 
