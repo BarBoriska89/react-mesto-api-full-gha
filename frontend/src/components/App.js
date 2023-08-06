@@ -67,6 +67,31 @@ function App() {
   }
 
   useEffect(() => {
+    console.log('это юзЭффект с токенчек');
+    if (localStorage.getItem('jwt')) {
+      const jwt = localStorage.getItem('jwt');
+      console.log(jwt);
+      getContent(jwt).then((res) => {
+        console.log(`результат ГктКонтент из хендел токен чек в апп${res.data}`);
+        console.log(`результат ГктКонтент из хендел токен чек в апп${res.data.email}`);
+        if (res) {
+          console.log(`зашла в иф рес`);
+          setLoggedIn(true);
+          console.log(loggedIn);
+          console.log(`результат ГктКонтент из хендел токен чек в апп${res.data}`);
+          setUserEmailOnHeader(res.data.email);
+          navigate("/", { replace: true })
+        }
+      })
+        .then((res) => {
+          console.log(res);
+          console.log(loggedIn);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [loggedIn]);
+
+  useEffect(() => {
     console.log(`loggedIn=${loggedIn}`);
     const promises = [api.getUser(), api.getCards()];
 
@@ -81,14 +106,9 @@ function App() {
       )
       .catch((err) => console.log("Ошибка запроса данных о пользователе ", err));
   }
-    , []);
+    , [loggedIn]);
 
-  useEffect(() => {
-    console.log('это юзЭффект с токенчек');
-    handleTokenCheck();
-  }, []);
-
-  function handleRegister(email, password) {
+    function handleRegister(email, password) {
 
     console.log(email, password);
     register({ email, password })
