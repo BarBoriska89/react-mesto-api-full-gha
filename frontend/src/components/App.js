@@ -194,9 +194,12 @@ function App() {
   }
 
   function handleUpdateUser(userData) {
+    console.log(userData);
     api.createUser(userData.name, userData.about)
       .then((res) => {
+        console.log(res);
         setCurrentUser(res);
+        console.log(currentUser);
         closeAllPopups();
       })
       .catch((err) => {
