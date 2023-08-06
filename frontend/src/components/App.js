@@ -20,8 +20,8 @@ import InfoTooltip from './InfoTooltip ';
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(false);
-  const navigate = useNavigate();
+   const navigate = useNavigate();
+   const [loggedIn, setLoggedIn] = useState(false);
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
 
