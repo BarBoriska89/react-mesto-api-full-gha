@@ -35,12 +35,13 @@ class Api {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this._getToken(),
-            body: JSON.stringify({ name, about }),
+            body: JSON.stringify({ name: name, about: about }),
         })
             .then((res) => {
+                this._checkResponse(res);
                 console.log(res);
-                this._checkResponse(res)
-            });
+            })
+            .then((resp) => console.log(resp));
     }
 
     getCards() {
