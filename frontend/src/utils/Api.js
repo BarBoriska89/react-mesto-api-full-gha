@@ -1,7 +1,8 @@
 const optionsApi = {
     baseUrl: 'http://api.mesto-ray.students.nomoreparties.co',
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
     },
 };
 
@@ -15,18 +16,18 @@ class Api {
         return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
     }
 
-    _getToken() {
-        const jwt = localStorage.getItem('jwt');
-        console.log(`печать jwt из гетТокен${this.headers}`);
-        return {
-            authorization: `Bearer ${jwt}`,
-            ...this.headers,
-        }
-    }
+  //  _getToken() {
+    //    const jwt = localStorage.getItem('jwt');
+      //  console.log(`печать jwt из гетТокен${this.headers}`);
+        //return {
+    //        authorization: `Bearer ${jwt}`,
+     //       ...this.headers,
+      //  }
+  //  }
 
     getUser() {
         return fetch(`${this._baseUrl}/users/me`, {
-            headers: this._getToken(),
+            headers: this._headers,
         })
             .then((res) => this._checkResponse(res));
     }
@@ -34,7 +35,7 @@ class Api {
     createUser(name, about) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
-            headers: this._getToken(),
+            headers: this._headers,
             body: JSON.stringify({ name: name, about: about }),
         })
             .then((res) => {
@@ -46,7 +47,7 @@ class Api {
 
     getCards() {
         return fetch(`${this._baseUrl}/cards`, {
-            headers: this._getToken(),
+            headers: this._headers,
         })
             .then((res) => this._checkResponse(res));
     }
@@ -54,7 +55,7 @@ class Api {
     postCard(card) {
         return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
-            headers: this._getToken(),
+            headers: this._headers,
             body: JSON.stringify({
                 name: card.name,
                 link: card.link,
@@ -66,7 +67,7 @@ class Api {
     deleteCard(cardId) {
         return fetch(`${this._baseUrl}/cards/${cardId}`, {
             method: 'DELETE',
-            headers: this._getToken(),
+            headers: this._headers,
         })
             .then((res) => this._checkResponse(res));
     }
@@ -74,7 +75,7 @@ class Api {
     addLike(cardId) {
         return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
             method: 'PUT',
-            headers: this._getToken(),
+            headers: this._headers,
         })
             .then((res) => this._checkResponse(res));
     }
@@ -82,7 +83,7 @@ class Api {
     deleteLike(cardId) {
         return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
             method: 'DELETE',
-            headers: this._getToken(),
+            headers: this._headers,
         })
             .then((res) => this._checkResponse(res));
     }
@@ -90,7 +91,7 @@ class Api {
     patchAvatar({ avatar }) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
-            headers: this._getToken(),
+            headers: this._headers,
             body: JSON.stringify({ avatar }),
         })
             .then((res) => this._checkResponse(res));
