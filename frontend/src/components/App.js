@@ -87,9 +87,10 @@ function App() {
       })
         .catch((err) => console.log(err));
     }
-  }, [loggedIn]);
+  }, []);
 
   useEffect(() => {
+    handleTokenCheck();
     console.log(`loggedIn=${loggedIn}`);
     if (loggedIn) {
       const promises = [api.getUser(), api.getCards()];
