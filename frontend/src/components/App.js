@@ -211,10 +211,10 @@ function App() {
       });
   }
 
-  async function handleUpdateUser({name, about}) {
-    console.log(name,about);
+  async function handleUpdateUser(name, about) {
+    console.log(name, about);
     await api
-      .createUser({name, about})
+      .createUser({ name, about })
       .then((res) => {
         console.log(res);
         setCurrentUser(res);
