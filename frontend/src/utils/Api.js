@@ -16,16 +16,7 @@ class Api {
         return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
     }
 
-    //  _getToken() {
-    //    const jwt = localStorage.getItem('jwt');
-    //  console.log(`печать jwt из гетТокен${this.headers}`);
-    //return {
-    //        authorization: `Bearer ${jwt}`,
-    //       ...this.headers,
-    //  }
-    //  }
-
-    getUser() {
+      getUser() {
         return fetch(`${this._baseUrl}/users/me`, {
             headers: this._headers,
         })
@@ -42,8 +33,7 @@ class Api {
             .then((res) => {
                 this._checkResponse(res);
                 console.log(res);
-            })
-            .catch((err) => console.log(err));
+            });
     }
 
     getCards() {

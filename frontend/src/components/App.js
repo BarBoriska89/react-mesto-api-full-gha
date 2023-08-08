@@ -91,18 +91,20 @@ function App() {
 
   useEffect(() => {
     console.log(`loggedIn=${loggedIn}`);
-    const promises = [api.getUser(), api.getCards()];
+    if (loggedIn) {
+      const promises = [api.getUser(), api.getCards()];
 
-    const getInfo = Promise.all(promises);
+      const getInfo = Promise.all(promises);
 
-    getInfo
-      .then(([userData, cardList]) => {
-        setCurrentUser(userData);
-        console.log(userData);
-        setCards(cardList);
-      }
-      )
-      .catch((err) => console.log("Ошибка запроса данных о пользователе ", err));
+      getInfo
+        .then(([userData, cardList]) => {
+          setCurrentUser(userData);
+          console.log(userData);
+          setCards(cardList);
+        }
+        )
+        .catch((err) => console.log("Ошибка запроса данных о пользователе ", err));
+    }
   }
     , [loggedIn]);
 
@@ -215,7 +217,6 @@ function App() {
     api
       .createUser({ name, about })
       .then((res) => {
-        console.log(res);
         setCurrentUser(res);
         console.log(currentUser);
         closeAllPopups();

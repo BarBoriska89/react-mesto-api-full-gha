@@ -47,5 +47,5 @@ app.use(errors()); // обработчик ошибок celebrate
 app.use(errorsMV); // централизованный обработчик ошибок
 
 app.listen(3000, () => {
-  console.log('Сервер запущен!');
+  console.log('Сервер запущен rere!');
 });
