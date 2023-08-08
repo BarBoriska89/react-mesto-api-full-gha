@@ -212,7 +212,6 @@ function App() {
   }
 
   function handleUpdateUser(userData) {
-    console.log(userData);
     api
       .createUser(userData.name, userData.about)
       .then((res) => {
