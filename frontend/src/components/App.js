@@ -80,7 +80,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    handleTokenCheck();
+    //handleTokenCheck();
     console.log(`loggedIn=${loggedIn}`);
     if (loggedIn) {
       const promises = [api.getUser(), api.getCards()];
