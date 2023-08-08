@@ -20,8 +20,8 @@ import InfoTooltip from './InfoTooltip ';
 
 function App() {
 
-   const navigate = useNavigate();
-   const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
 
@@ -85,7 +85,7 @@ function App() {
           navigate("/", { replace: true })
         }
       })
-              .catch((err) => console.log(err));
+        .catch((err) => console.log(err));
     }
   }, [loggedIn]);
 
@@ -106,7 +106,7 @@ function App() {
   }
     , [loggedIn]);
 
-    function handleRegister(email, password) {
+  function handleRegister(email, password) {
 
     console.log(email, password);
     register({ email, password })
@@ -211,9 +211,10 @@ function App() {
       });
   }
 
-  async function handleUpdateUser(userData) {
+  function handleUpdateUser(userData) {
     console.log(userData);
-    await api.createUser(userData.name, userData.about)
+    api
+      .createUser(userData.name, userData.about)
       .then((res) => {
         console.log(res);
         setCurrentUser(res);
