@@ -211,9 +211,9 @@ function App() {
       });
   }
 
-  async function handleUpdateUser(name, about) {
-    console.log(name, about);
-    await api
+  function handleUpdateUser({ name, about }) {
+    console.log({name, about});
+    api
       .createUser({ name, about })
       .then((res) => {
         console.log(res);
