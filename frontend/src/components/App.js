@@ -48,12 +48,8 @@ function App() {
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt');
       getContent(jwt).then((res) => {
-        console.log(`результат ГктКонтент из хендел токен чек в апп${res.data}`);
-        console.log(`результат ГктКонтент из хендел токен чек в апп${res.data.email}`);
         if (res) {
           setLoggedIn(true);
-          console.log(loggedIn);
-          console.log(`результат ГктКонтент из хендел токен чек в апп${res.data}`);
           setUserEmailOnHeader(res.data.email);
           navigate("/", { replace: true })
         }
@@ -70,17 +66,11 @@ function App() {
     console.log('это юзЭффект с токенчек');
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt');
-      console.log(jwt);
       getContent(jwt).then((res) => {
-        console.log(`результат ГктКонтент из хендел токен чек в апп${res}`);
-        console.log(`результат ГктКонтент из хендел токен чек в апп${res.email}`);
+
         if (res) {
-          console.log(`зашла в иф рес`);
           setLoggedIn(true);
-          console.log(loggedIn);
           handleLogin();
-          console.log(loggedIn);
-          console.log(`результат ГктКонтент из хендел токен чек в апп${res.data}`);
           setUserEmailOnHeader(res.email);
           navigate("/", { replace: true })
         }
@@ -214,8 +204,8 @@ function App() {
       });
   }
 
-  function handleUpdateUser({ name, about }) {
-    api
+  async function handleUpdateUser({ name, about }) {
+    await api
       .createUser({ name, about })
       .then((res) => {
         setCurrentUser(res);
