@@ -204,8 +204,8 @@ function App() {
       });
   }
 
-  async function handleUpdateUser({ name, about }) {
-    await api
+  function handleUpdateUser({ name, about }) {
+    api
       .createUser({ name, about })
       .then((res) => {
         setCurrentUser(res);
