@@ -24,7 +24,7 @@ class Api {
     }
 
     createUser(name, about) {
-        console.log(name,about);
+        console.log(name, about);
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
@@ -32,7 +32,6 @@ class Api {
         })
             .then((res) => {
                 this._checkResponse(res);
-                console.log(res);
             });
     }
 
