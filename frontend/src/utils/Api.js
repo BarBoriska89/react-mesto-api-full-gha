@@ -23,12 +23,12 @@ class Api {
             .then((res) => this._checkResponse(res));
     }
 
-    createUser({name, about}) {
-        console.log({name,about});
+    createUser(dataUser) {
+        console.log(dataUser);
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
-            body: JSON.stringify({ name, about }),
+            body: JSON.stringify(dataUser),
         })
             .then((res) => {
                 this._checkResponse(res);

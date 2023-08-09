@@ -188,12 +188,10 @@ function handleCardDelete(card) {
     });
 }
 
-async function handleUpdateUser({ name, about }) {
-  await api
-    .createUser({ name, about })
-    .then((res) => {
-      setCurrentUser(res);
-      console.log(currentUser);
+function handleUpdateUser(userData) {
+  api.createUser(userData)
+    .then((newUserInfo) => {
+      setCurrentUser(newUserInfo);
       closeAllPopups();
     })
     .catch((err) => {
