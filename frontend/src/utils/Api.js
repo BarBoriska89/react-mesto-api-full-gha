@@ -16,19 +16,19 @@ class Api {
         return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
     }
 
-      getUser() {
+    getUser() {
         return fetch(`${this._baseUrl}/users/me`, {
             headers: this._headers,
         })
             .then((res) => this._checkResponse(res));
     }
 
-    createUser(dataUser) {
-        console.log(dataUser);
+    createUser(name, about) {
+        console.log(name,about);
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
-            body: JSON.stringify(dataUser),
+            body: JSON.stringify({ name, about }),
         })
             .then((res) => {
                 this._checkResponse(res);

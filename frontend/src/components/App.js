@@ -189,15 +189,11 @@ function App() {
   }
 
   function handleUpdateUser(userData) {
-    api.createUser(userData)
-      .then((newUserInfo) => {
-        console.log(newUserInfo);
-        // setCurrentUser(newUserInfo);
+    api.createUser(userData.name, userData.about)
+      .then((res) => {
+        console.log(res);
+        setCurrentUser(res);
         closeAllPopups();
-      })
-      .then((resp) => {
-        console.log(resp);
-        setCurrentUser(resp);
       })
       .catch((err) => {
         console.log("Ошибка редактирования профиля", err);
