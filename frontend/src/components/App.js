@@ -188,8 +188,8 @@ function handleCardDelete(card) {
     });
 }
 
-function handleUpdateUser({ name, about }) {
-  api
+async function handleUpdateUser({ name, about }) {
+  await api
     .createUser({ name, about })
     .then((res) => {
       setCurrentUser(res);
