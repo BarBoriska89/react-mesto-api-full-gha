@@ -194,6 +194,8 @@ function App() {
         console.log(res);
         setCurrentUser(res);
         closeAllPopups();
+      }).then((qqq) => {
+        console.log(qqq);
       })
       .catch((err) => {
         console.log("Ошибка редактирования профиля", err);

@@ -31,17 +31,9 @@ class Api {
             body: JSON.stringify({ name, about }),
         })
             .then((res) => {
-                //this._checkResponse(res);
-                if (res.ok){
-                   const i = res.json();
-                   console.log(i);
-                   return i;
-                }
-                else {
-                    Promise.reject(`Error!!!${res.status}`);
-                }
-            })
-            .then((resp) => console.log(resp));
+                this._checkResponse(res);
+                console.log(res);
+            });
     }
 
     getCards() {
