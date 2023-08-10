@@ -30,10 +30,7 @@ class Api {
             headers: this._headers,
             body: JSON.stringify({ name, about }),
         })
-            .then((res) => {
-                this._checkResponse(res);
-                console.log(res);
-            });
+            .then(this._checkResponse);
     }
 
     getCards() {
@@ -76,9 +73,7 @@ class Api {
             method: 'DELETE',
             headers: this._headers,
         })
-    }
-    .then((res) =>     }
-            );
+            .then((res) => this._checkResponse(res));
     }
 
     patchAvatar({ avatar }) {

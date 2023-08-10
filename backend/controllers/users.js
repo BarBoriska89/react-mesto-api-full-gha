@@ -68,8 +68,9 @@ const updateUser = (req, res, next) => {
       console.log(user);
       if (!user) {
         throw new NotFound(`Пользователь по указанному _id ${userId} не найден. `);
+      } else {
+        res.send(user);
       }
-      res.send(user);
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {

@@ -1,9 +1,9 @@
-const allowedCors = ['http://mesto-ray.students.nomoreparties.co', 'https://mesto-ray.students.nomoreparties.co', 'http://localhost:3000'];
+const allowedCors = ['http://mesto-ray.students.nomoreparties.co', 'https://mesto-ray.students.nomoreparties.co', 'http://localhost:3000', 'https://localhost:3000'];
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
 const corsMW = (req, res, next) => {
   const { origin } = req.headers;
-  console.log(req);
+  console.log('Pfghjc c fronta');
   console.log(origin);
   const { method } = req;
   console.log(method);

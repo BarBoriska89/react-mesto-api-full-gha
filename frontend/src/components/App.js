@@ -49,6 +49,7 @@ function App() {
       const jwt = localStorage.getItem('jwt');
       getContent(jwt)
         .then((res) => {
+          console.log(res);
           setLoggedIn(true);
           setUserEmailOnHeader(res.email);
           navigate("/", { replace: true })
@@ -87,8 +88,8 @@ function App() {
 
     console.log(email, password);
     register({ email, password })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        //console.log(res);
         setIsSuccessfulRegistration(true);
         setIsInfoTooltipPopupOpen(true);
         navigate('/sign-in', { replace: true });
