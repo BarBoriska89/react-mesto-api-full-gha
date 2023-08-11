@@ -82,7 +82,7 @@ function App() {
   useEffect(() => {
     handleTokenCheck();
   }
-    , []);
+    , [loggedIn]);
 
   function handleRegister(email, password) {
 
