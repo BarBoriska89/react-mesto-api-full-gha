@@ -1,5 +1,5 @@
 const optionsApi = {
-    baseUrl: 'http://localhost:3001',
+    baseUrl: 'http://api.mesto-ray.students.nomoreparties.co',
     headers: {
         'Content-Type': 'application/json',
     },

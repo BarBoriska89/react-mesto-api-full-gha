@@ -47,6 +47,6 @@ app.use(errorLogger); // логгер ошибок
 app.use(errors()); // обработчик ошибок celebrate
 app.use(errorsMV); // централизованный обработчик ошибок
 
-app.listen(3001, () => {
+app.listen(3000, () => {
   console.log('Сервер запущен!');
 });
