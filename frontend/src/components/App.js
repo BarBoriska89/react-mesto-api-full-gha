@@ -21,7 +21,7 @@ import InfoTooltip from './InfoTooltip ';
 function App() {
 
   const navigate = useNavigate();
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState();
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
 
@@ -41,23 +41,6 @@ function App() {
   const [userEmailOnHeader, setUserEmailOnHeader] = useState('');
 
   const [isSuccessfulRegistration, setIsSuccessfulRegistration] = useState(null);
-
-
-
-  const handleTokenCheck = () => {
-    if (localStorage.getItem('jwt')) {
-      const jwt = localStorage.getItem('jwt');
-      getContent(jwt)
-        .then((res) => {
-          console.log(res);
-          setLoggedIn(true);
-          setUserEmailOnHeader(res.email);
-          navigate("/", { replace: true })
-        })
-        .catch((err) => console.log(err));
-    }
-  }
-
 
   useEffect(() => {
 
@@ -82,7 +65,26 @@ function App() {
   useEffect(() => {
     handleTokenCheck();
   }
-    , [loggedIn]);
+    , []);
+
+
+  const handleTokenCheck = () => {
+    if (localStorage.getItem('jwt')) {
+      const jwt = localStorage.getItem('jwt');
+      getContent(jwt)
+        .then((res) => {
+          console.log(res);
+          //setCurrentUser(res);
+          setLoggedIn(true);
+          setUserEmailOnHeader(res.email);
+          navigate("/", { replace: true })
+        })
+        .then((qqq) => {
+          console.log(loggedIn);
+        })
+        .catch((err) => console.log(err));
+    } else return;
+  }
 
   function handleRegister(email, password) {
 
@@ -102,16 +104,21 @@ function App() {
   }
 
   function onLogin(email, password) {
+    console.log(loggedIn);
     authorize({ email, password })
       .then((data) => {
+        console.log(loggedIn);
         console.log(data);
         if (data.token) {
           localStorage.setItem('jwt', data.token);
-          handleLogin();
+          console.log(loggedIn);
+          setLoggedIn(true);
+          console.log(loggedIn);
           setUserEmailOnHeader(email);
           navigate("/", { replace: true });
         }
       })
+      .then(() => console.log(loggedIn))
       .catch(err => console.log(err));
   }
 
@@ -123,6 +130,8 @@ function App() {
   function onSignOut() {
     localStorage.removeItem('jwt');
     setUserEmailOnHeader('');
+    setLoggedIn(false);
+    console.log(loggedIn);
   }
 
   function handleEditAvatarClick() {
@@ -155,15 +164,16 @@ function App() {
   }
 
   function handleCardLike(card) {
-
+    console.log(card);
     console.log(card.likes);
     console.log(currentUser._id);
-    
+
     const isLiked = card.likes.some(i => i === currentUser._id);
 
     if (!isLiked) {
       api.addLike(card._id)
         .then((newCard) => {
+          console.log(newCard);
           setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
         })
         .catch((err) => {
@@ -243,8 +253,8 @@ function App() {
 
 
         <Routes>
-          <Route path="/" element={loggedIn ? <Navigate to="/mesto-react" replace /> : <Navigate to="/sign-in" replace />} />
-          <Route path="/mesto-react" element={<ProtectedRouteElement element={Main}
+
+          <Route path="/" element={<ProtectedRouteElement element={Main}
             onEditProfile={handleEditProfileClick}
             onAddPlace={handleAddPlaceClick}
             onEditAvatar={handleEditAvatarClick}

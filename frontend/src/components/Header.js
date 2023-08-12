@@ -19,7 +19,7 @@ function Header(props) {
           <Routes>
             <Route exact path="/sign-in" element={<Link to="/sign-up" className="header__button button">Регистрация</Link>} />
             <Route exact path="/sign-up" element={<Link to="/sign-in" className="header__button button">Войти</Link>} />
-            <Route exact path="/mesto-react" element={<Link to="/sign-in" className="header__button button" onClick={signOut}>Выйти</Link>} />
+            <Route exact path="/" element={<Link to="/sign-in" className="header__button button" onClick={signOut}>Выйти</Link>} />
           </Routes>
 
         </div>
