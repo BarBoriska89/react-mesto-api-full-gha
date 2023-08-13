@@ -1,5 +1,5 @@
 const optionsApi = {
-    baseUrl: 'http://api.mesto-ray.students.nomoreparties.co',
+    baseUrl: 'https://api.mesto-ray.students.nomoreparties.co',
     headers: {
         'Content-Type': 'application/json',
     },
