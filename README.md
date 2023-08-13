@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.96.192
+IP 51.250.96.192
 
 Frontend https://mesto-ray.students.nomoreparties.co/
 
